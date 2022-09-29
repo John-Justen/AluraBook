@@ -1,0 +1,190 @@
+.cabecalho__menu-hamburguer {
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/Menu.svg");
+    /*quando a imagem passa do tamanho atribuido a ela, tende a repetir, mas removemos isso abaixo*/
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
+
+.container__botao:checked ~ .container__rotulo>.cabecalho__menu-hamburguer {
+    background-image: url("../img/Menu_Aberto.svg");
+}
+
+.container__botao:checked ~.container__rotulo {
+    background: var(--azul-degrade);
+}
+
+.cabecalho {
+    background-color: var(--branco);
+    display: flex;
+    /*distibuimos os itens(container) para cada canto do cabecalho*/
+    justify-content: space-between;
+    /*alinhamos os itens dentro do cabecalho*/
+    align-items: center;
+    /*definimos que os elementos dentro do container .cabecalho terão posisões relativas,
+    podendo assim trabalharmos separadamente com cada um*/
+    position: relative;
+}
+
+/*além de alinhar os containers, também alinhamos os itens dentro do container*/
+.container {
+    display: flex;
+    align-items: center;
+}
+
+/*colocamos um espaçamento interno nessa classe de imagens*/
+.container__imagem {
+    padding: 1em;
+}
+
+/*removemos a lista que aparece por padrão a qual colocamos no html*/
+.lista-menu {
+    display: none;
+    /*O absolute permite que você movimente o elemento de acordo com outro que veio antes e possiu o position diferente de static(padrão)*/
+    position: absolute;
+    /*colocamos uma distancia de 100% no top para que o item não fique em cima do cabecalho*/
+    top: 100%;
+    /*aumentamos o tamanho da largura da lista*/
+    width: 60vw;
+    font-family: var(--fonte-principal);
+}
+
+/*caso o elemento contendo a classe .container__botao estiver "checado",
+fará todos os elementos contendo a class .lista-menu aparecer em bloco*/
+.container__botao:checked ~ .lista-menu {
+    display: block;
+
+}
+
+/*colocamos um espaçamento interno de 1em que se refere ao tamanho da fonte
+ dentro desse e mudamos a cor de fundo nos elementos da class abaixo*/
+.lista-menu__titulo,
+.lista-menu__item {
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo {
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link {
+    background: var(--azul-degrade);
+    /*serve para compatibilidade com otros navegadores*/
+    -webkit-background-clip: text;
+    /*vai prender o background no texto*/
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+/*removemos o checkbox visualmente*/
+.container__botao {
+    display: none;
+}
+
+.container__titulo {
+    display: none;
+}
+
+.opcoes {
+    display: none;
+}
+
+.container__texto {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .container__titulo,
+    .container__titulo--negrito {
+        font-family: var(--fonte-secundario);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opcoes {
+        display: flex;
+    }
+
+    .opcoes__item {
+        padding: 0 1em;
+        text-transform: uppercase;
+    }
+
+    .opcoes__link {
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente {
+        display: none;
+    }
+
+    .cabecalho__menu-hamburguer{
+        display: none;
+    }
+
+    .opcoes__botao:checked~.lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao {
+        display: none;
+    }
+
+    .opcoes__botao:checked~.opcoes__rotulo>.opcoes__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoes__item {
+        padding: 2em 1em;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover >.lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+
+}
+
+@media screen and (min-width: 1728px) {
+    
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    /*preenchemos a margem direita como automatica, fazendo com que os itens sejam empurrados para esquerda*/
+    .opcoes {
+        margin-right: auto;
+    }
+
+    .container__texto {
+    display: block;
+    }
+}
+
